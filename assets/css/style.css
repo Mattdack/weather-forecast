@@ -1,0 +1,10 @@
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+nav{
+    background: linear-gradient(90deg, rgb(135, 178, 235), rgb(27, 27, 180));
+    color: white;
+    margin: 5px;
+}
