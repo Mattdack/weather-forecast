@@ -25,17 +25,17 @@ function getLatLong() {
   } else {
     cityName = pastName;
   }
-  var cityNameEl = $("<h2>").text(
-    cityName + " (" + moment().format("MM/DD/YY") + ")"
-  );
-  cityNameEl.css("display", "inline");
-  dayOfEl.append(cityNameEl);
   fetch(geoURL + cityName + "&limit=1&appid=ad135c2d1b0c4e73e98dbe91d4187ad4")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      if (data.length > 0) {
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    if (data.length > 0) {
+        var cityNameEl = $("<h2>").text(
+          cityName + " (" + moment().format("MM/DD/YY") + ")"
+        );
+        cityNameEl.css("display", "inline");
+        dayOfEl.append(cityNameEl);
         cityLat = data[0].lat;
         cityLon = data[0].lon;
         if (!previousSearches.includes(cityName)) {
@@ -46,6 +46,7 @@ function getLatLong() {
           );
         }
         btnHit = false;
+        console.log(data);
         init();
         return getWeatherData();
       } else {
